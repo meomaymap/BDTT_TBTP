@@ -630,6 +630,7 @@ var MaxNumCol = 8;
                     setStyle(EID("myOverlay"), {'display': 'block'});
                 } else {
                     alert("Hiện chương trình này đang bảo trì, làm ơn chạy lại sau 15 phút nữa");
+		    lock('portrait');
 
                 }
         });       
@@ -638,6 +639,7 @@ var MaxNumCol = 8;
     function closeSearch() {
         setStyle(EID("myOverlay"), {'display': 'none'});
         EID("myFrame").src ="" ;
+	    lock('portrait');
     }        
 
     
