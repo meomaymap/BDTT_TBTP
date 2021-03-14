@@ -479,6 +479,7 @@ var MaxNumCol = 8;
             checkMedia(mql);
             mql.addListener(checkMedia);
 
+            lock('portrait');
             function checkMedia(mql){
 
                 if(mql.matches){
