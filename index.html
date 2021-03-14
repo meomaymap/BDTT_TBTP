@@ -420,6 +420,7 @@ var MaxNumCol = 8;
                 displayWindowSize();
                 //openFullscreen();
                 setStyle(EID("myLoading"), {'display': 'none'});
+                setTimeout(function(){ lock('portrait'); }, 250);
                 
             });
             
@@ -498,10 +499,12 @@ var MaxNumCol = 8;
 
 			document.querySelector(element).addEventListener('touchstart', function(e){
                 if (e.touches.length !== 1) { 
-                    lock('portrait');
+                    
                     //openFullscreen();
                     return; 
                 }
+
+                lock('portrait');
 
                 var scrollY = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
                 prevent = (scrollY === 0);
