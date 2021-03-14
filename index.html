@@ -489,7 +489,7 @@ var MaxNumCol = 8;
                     setStyleAllClass("Q01a", {"font-size":6*pos+"vw"});
                     setStyleAllClass("Q01b", {"height":3*pos+"vw","font-size":0.8*pos+"vw", "border-bottom-left-radius": 1*pos + "vw", "border-bottom-right-radius": 1*pos + "vw"});
 
-                    lock('portrait');
+                    //lock('portrait');
                 }
             }
         }
@@ -499,8 +499,9 @@ var MaxNumCol = 8;
 			var prevent = false;
 
 			document.querySelector(element).addEventListener('touchstart', function(e){
+                lock('portrait');
                 if (e.touches.length !== 1) { 
-                    lock('portrait');
+                    
                     //openFullscreen();
                     return; 
                 }
@@ -512,8 +513,9 @@ var MaxNumCol = 8;
 		    });
 
 			document.querySelector(element).addEventListener('touchmove', function(e){
+                lock('portrait');
                 if (prevent) {
-                    lock('portrait');
+                   
                     prevent = false;
                     e.preventDefault();
                 }
@@ -573,7 +575,7 @@ var MaxNumCol = 8;
     // Attaching the event listener function to window's resize event
     window.addEventListener("resize", displayWindowSize);
 
-    document.getElementById("row").addEventListener("scroll", lock('portrait'));
+    //document.getElementById("row").addEventListener("scroll", lock('portrait'));
 
     document.addEventListener("touchstart", function(e){
         if(event.touches.length > 1){
@@ -618,7 +620,7 @@ var MaxNumCol = 8;
 
             var link = "none";
             $.getJSON(url, function (json) {
-                lock('portrait');
+                //lock('portrait');
                 for (var i = 0; i < json.records.length; i++) {
                     if( json.records[i].Col4 == GetElement(elmnt,[1,2]).innerHTML) {
                         link = json.records[i].Col2 ;
@@ -639,7 +641,7 @@ var MaxNumCol = 8;
     }
 
     function closeSearch() {
-        lock('portrait');
+        //lock('portrait');
         setStyle(EID("myOverlay"), {'display': 'none'});
         EID("myFrame").src ="" ;
     }        
