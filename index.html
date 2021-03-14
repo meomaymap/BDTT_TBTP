@@ -240,7 +240,7 @@ html, body {
     <div class="module">
         <div class="header"  id="test">Tiêu đề cố định</div>
 	    <div class="bottom">Footer cố định</div>
-        <div class="row">
+        <div class="row" id="row">
             
         </div>
     </div>
@@ -356,7 +356,7 @@ var MaxNumCol = 8;
             AllDevice();
 
             
-
+            lock('portrait');
         }
 
 
@@ -482,7 +482,7 @@ var MaxNumCol = 8;
             function checkMedia(mql){
 
                 if(mql.matches){
-		    lock('portrait');
+
                     setStyleAllClass("row", {"padding-top": 2*pos+"vw", "padding-bottom": 2*pos+"vw"});
                     setStyleAllClass(NameClassCol, {"width":(100/MaxNumCol)*pos + "%", "padding": 1*pos+"vw", "height":12*pos+"vw"});
                     setStyleAllClass("item", {"height":9*pos+"vw", "border-radius": 1*pos + "vw"});
@@ -498,12 +498,12 @@ var MaxNumCol = 8;
 
 			document.querySelector(element).addEventListener('touchstart', function(e){
                 if (e.touches.length !== 1) { 
-                    
+                    lock('portrait');
                     //openFullscreen();
                     return; 
                 }
 
-                lock('portrait');
+                
 
                 var scrollY = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
                 prevent = (scrollY === 0);
@@ -511,6 +511,7 @@ var MaxNumCol = 8;
 
 			document.querySelector(element).addEventListener('touchmove', function(e){
                 if (prevent) {
+                    lock('portrait');
                     prevent = false;
                     e.preventDefault();
                 }
@@ -604,7 +605,7 @@ var MaxNumCol = 8;
 
     function openProgram(elmnt) {
         setStyle(EID("myLoading"), {'display': 'block'});
-
+        lock('portrait');
         
         var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
             
@@ -630,16 +631,15 @@ var MaxNumCol = 8;
                     setStyle(EID("myOverlay"), {'display': 'block'});
                 } else {
                     alert("Hiện chương trình này đang bảo trì, làm ơn chạy lại sau 15 phút nữa");
-		    lock('portrait');
 
                 }
         });       
     }
 
     function closeSearch() {
+        lock('portrait');
         setStyle(EID("myOverlay"), {'display': 'none'});
         EID("myFrame").src ="" ;
-	    lock('portrait');
     }        
 
     
