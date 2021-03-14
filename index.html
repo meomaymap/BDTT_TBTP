@@ -482,7 +482,7 @@ var MaxNumCol = 8;
             function checkMedia(mql){
 
                 if(mql.matches){
-
+		    lock('portrait');
                     setStyleAllClass("row", {"padding-top": 2*pos+"vw", "padding-bottom": 2*pos+"vw"});
                     setStyleAllClass(NameClassCol, {"width":(100/MaxNumCol)*pos + "%", "padding": 1*pos+"vw", "height":12*pos+"vw"});
                     setStyleAllClass("item", {"height":9*pos+"vw", "border-radius": 1*pos + "vw"});
