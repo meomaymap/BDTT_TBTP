@@ -330,6 +330,22 @@ var MaxNumCol = 8;
             }
         }
 
+        function lock (orientation) {
+    // Go into full screen first
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+
+            // Then lock orientation
+            screen.orientation.lock(orientation);
+        }
+
         function displayWindowSize() {
             //openFullscreen();
             
@@ -360,21 +376,7 @@ var MaxNumCol = 8;
         }
 
 
-        function lock (orientation) {
-  // Go into full screen first
-        if (document.documentElement.requestFullscreen) {
-            document.documentElement.requestFullscreen();
-        } else if (document.documentElement.mozRequestFullScreen) {
-            document.documentElement.mozRequestFullScreen();
-        } else if (document.documentElement.webkitRequestFullscreen) {
-            document.documentElement.webkitRequestFullscreen();
-        } else if (document.documentElement.msRequestFullscreen) {
-            document.documentElement.msRequestFullscreen();
-        }
-
-        // Then lock orientation
-        screen.orientation.lock(orientation);
-        }
+        
 
     //lock('portrait');
 
@@ -493,6 +495,7 @@ var MaxNumCol = 8;
                     //lock('portrait');
                 }
             }
+            lock('portrait');
         }
         AllDevice();
        
@@ -579,6 +582,7 @@ var MaxNumCol = 8;
     //document.getElementById("row").addEventListener("scroll", lock('portrait'));
 
     document.addEventListener("touchstart", function(e){
+        lock('portrait');
         if(event.touches.length > 1){
                 //the event is multi-touch
                 //you can then prevent the behavior
@@ -588,7 +592,7 @@ var MaxNumCol = 8;
 
     
     //window.addEventListener('orientationchange', function () { if (window.innerHeight > window.innerWidth) { document.getElementsByTagName('body')[0].style.transform = "rotate(90deg)"; } });
-    window.addEventListener('orientationchange', lock('portrait'));
+    //window.addEventListener('orientationchange', lock('portrait'));
 
         
     preventPullToRefresh('html'); // pass #id or html tag into the method
