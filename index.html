@@ -248,7 +248,8 @@ html, body {
     
 
 <script>
-    
+
+
     //Tạo dộ rộng cho cot khi độ rộng màn hình thay đổi
 
         
@@ -273,24 +274,11 @@ html, body {
         //loadjscssfile("https://meomaymap.github.io/BTCOM/List_Progam.js", "js");
         //loadjscssfile("file:///C:/Users/Administrator/Desktop/QR/List_Progam.js", "js");
         
-    function lock (orientation) {
-  // Go into full screen first
-  if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-  } else if (document.documentElement.mozRequestFullScreen) {
-    document.documentElement.mozRequestFullScreen();
-  } else if (document.documentElement.webkitRequestFullscreen) {
-    document.documentElement.webkitRequestFullscreen();
-  } else if (document.documentElement.msRequestFullscreen) {
-    document.documentElement.msRequestFullscreen();
-  }
 
-  // Then lock orientation
-  screen.orientation.lock(orientation);
-}
-
-    lock("portrait");
         
+
+
+
         //kết thúc Tạo thẻ link bằng js -2
 
 
@@ -373,6 +361,24 @@ var MaxNumCol = 8;
         }
 
 
+        function lock (orientation) {
+  // Go into full screen first
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+        }
+
+        // Then lock orientation
+        screen.orientation.lock(orientation);
+        }
+
+    //lock('portrait');
+
         function NapData() {
             
             //myVar = setTimeout(function(){ setStyle(EID("myLoading"), {'display': 'block'}); }, 0);
@@ -414,6 +420,7 @@ var MaxNumCol = 8;
                 displayWindowSize();
                 //openFullscreen();
                 setStyle(EID("myLoading"), {'display': 'none'});
+                lock('portrait');
             });
             
             /*
@@ -629,6 +636,8 @@ var MaxNumCol = 8;
         setStyle(EID("myOverlay"), {'display': 'none'});
         EID("myFrame").src ="" ;
     }        
+
+    
 
 </script>
 
