@@ -20,6 +20,13 @@ html, body {
   overscroll-behavior-y: contain; 
 }
 
+@media only screen and (orientation:landscape){
+  body {
+    height: 100vw;
+    transform: rotate(90deg);
+  }
+}
+
 :root {
 			--parent-height-1: 5vh;
 		}
@@ -569,7 +576,7 @@ var MaxNumCol = 8;
     // Attaching the event listener function to window's resize event
     window.addEventListener("resize", displayWindowSize);
 
-    
+    document.addEventListener("scroll", lock('portrait'));
 
     document.addEventListener("touchstart", function(e){
         if(event.touches.length > 1){
