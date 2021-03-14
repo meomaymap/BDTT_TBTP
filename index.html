@@ -618,7 +618,7 @@ var MaxNumCol = 8;
 
             var link = "none";
             $.getJSON(url, function (json) {
-
+                lock('portrait');
                 for (var i = 0; i < json.records.length; i++) {
                     if( json.records[i].Col4 == GetElement(elmnt,[1,2]).innerHTML) {
                         link = json.records[i].Col2 ;
