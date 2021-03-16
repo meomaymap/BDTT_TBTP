@@ -4,6 +4,7 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
 	        .Loading {
             height: 100vh;
@@ -69,18 +70,30 @@
 </head>
 <body>
 <script>
-	setTimeout(function(){ document.getElementById('id01').style.display='none'; }, 3000);
+
+    function QQQ() {
+    	var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
+            
+            var url = script_url+"?";
+                url = url + "action" + "=" + "Import_ListProgram";
+                url = url + "&" + "url" + "=" + "https://meomaymap.github.io";
+                url = url + "&" + "dk" + "=" + 1;
+            $.getJSON(url, function (json) {
+				alert(json.records[0].Col4);
+                document.getElementById('id01').style.display='none'; 
+            });
+    }
 </script>
 <div>
   <h2>W3.CSS Modal</h2>
-  <button onclick="document.getElementById('id01').style.display='block'; setTimeout(function(){ document.getElementById('id01').style.display='none'; }, 3000);" class="w3-button w3-black">Open Modal</button>
+  <button onclick="document.getElementById('id01').style.display='block'; QQQ()" class="w3-button w3-black">Open Modal</button>
 
   <div id="id01" class="loading" style="display: none">
     <div class="Loading-content">
-      <div class="w3-container">
+
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
         	<div class="loader"></div>
-     	</div>
+
     </div>
   </div>
 </div>
