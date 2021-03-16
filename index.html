@@ -422,6 +422,7 @@ var MaxNumCol = 8;
                 //openFullscreen();
                 setStyle(EID("myLoading"), {'display': 'none'});
                 //setTimeout(function(){ lock('portrait'); }, 250);
+		setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
                 
             });
             
@@ -615,6 +616,9 @@ var MaxNumCol = 8;
 
     function openProgram(elmnt) {
         setStyle(EID("myLoading"), {'display': 'block'});
+	
+	    setStyle(EID("myLoading"), {'visibility': 'visible'}); 
+	    
         lock('portrait');
         
         var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
@@ -635,6 +639,7 @@ var MaxNumCol = 8;
                 }        
 
                 setStyle(EID("myLoading"), {'display': 'none'});
+		setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
 
                 if (link != "none" && link !="") {
                     EID("myFrame").src = link;
