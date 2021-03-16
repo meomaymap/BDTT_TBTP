@@ -6,29 +6,149 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <style>
-	        .Loading {
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            z-index: 3;
-            top: 0;
-            left: 0;
-            
+	      
+		/* disable pull to refresh, keeps glow effects */
+html, body {
+    font-family: Arial;
+  padding: 0px;
+  margin: 0px;
+  overscroll-behavior-y: contain; 
+}
+
+
+:root {
+			--parent-height-1: 5vh;
+		}
+		
+		* {
+            touch-action: manipulation;
 
         }
-        .main {
+               
+
+        .module {
+            height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+            height: calc(var(--vh, 1vh) * 100);
+            margin: 0 auto;
+            max-width: 100%;
+            overflow: auto;
+            position: relative;
+			padding-bottom: var(--parent-height-1);
+            
+        }
+
+        .module__item {
+            align-items: center;
+            display: flex;
+            height: 30vh;
+            justify-content: center;
+        }
+
+        .module__item:nth-child(odd) {
+            background-color: #fff;
+            color: #F73859;
+        }
+
+        .module__item:nth-child(even) {
+            background-color: #F73859;
+            color: #F1D08A;
+        }
+		
+		div.header {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: var(--parent-height-1);
+			background-color: yellow;
+			color: black;
+			text-align: center;
+            z-index: 1;
+		}
+		
+		div.bottom {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: var(--parent-height-1);
+			background-color: green;
+			color: white;
+			text-align: center;
+            z-index: 1;
+		}
+		
+		div.sticky {
+			position: -webkit-sticky;
+			position: sticky;
+			top: var(--parent-height-1);
+
+		}
+
+
+        .column {float: left;}
+
+        .item {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+
+            background-color: lightblue;
+            position: relative;
+            width: 100%;
+        }
+
+        img {border-radius: 25%; padding: 0.2vw;}
+        
+
+        .Q01b {
+            position: absolute;
+
+            bottom: 0px;
+            width: 100%;
+            font-weight: bold;
+            background-color:lightcoral;
+            
+        }
+
+
+
+        .overlay {
+            height: 100vh;
+            width: 100vw;
+            display: none;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.9);
+            z-index: 2;
+        }
+
+        .Loading {
             height: 100vh;
             width: 100vw;
             position: fixed;
             z-index: 3;
             top: 0;
             left: 0;
-            
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.9);
+            z-index: 2;
+        }
 
+        .overlay-content {
+            position: relative;
+            top: 0%;
+            height: 100vh;
+            width: 100vw;
+            text-align: center;
+            margin-top: 30px;
+            margin: auto;
         }
 
         .Loading-content {
-            position: absolute;
+            position: relative;
 			top: 0%;
             left: 0%;
             height: 100vh;
@@ -37,10 +157,22 @@
 			display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue;
         }
-        
-        
+
+        .closebtn {
+            position: absolute;
+            top: -5px;
+            right: 18px;
+            font-size: 30px;
+            cursor: pointer;
+            color: black;
+        }
+
+        .overlay .closebtn:hover {
+            color: #ccc;
+        }
+
+
         .loader {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
@@ -65,13 +197,21 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .iFrame_content {
+            width: 100vw;
+            width: calc(var(--vw, 1vw) * 100);
+            height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
+            
+        }
+        
 </style>
 
 </head>
 <body>
 <script>
-
-    function QQQ() {
+	function napData() {
     	var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
             
             var url = script_url+"?";
@@ -79,24 +219,52 @@
                 url = url + "&" + "url" + "=" + "https://meomaymap.github.io";
                 url = url + "&" + "dk" + "=" + 1;
             $.getJSON(url, function (json) {
-				alert(json.records[0].Col4);
-                document.getElementById('id01').style.display='none'; 
-            });
-    }
-</script>
-<div>
-  <h2>W3.CSS Modal</h2>
-  <button onclick="document.getElementById('id01').style.display='block'; QQQ()" class="w3-button w3-black">Open Modal</button>
+                for (var i = 0; i < json.records.length; i++) {
 
-  <div id="id01" class="loading" style="display: none">
+                }               
+
+
+                document.getElementById('id01').style.display='none';
+
+                
+            });
+            
+
+    }
+   
+</script>
+	  
+<div class="main">
+
+	<button onclick="document.getElementById('id01').style.display='block'; napData()" class="w3-button w3-black">Open Modal</button>
+
+  <div id="id01" class="loading" style="display: none" >
     <div class="Loading-content">
 
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        	<div class="loader"></div>
+        	<div class="loader" onclick="document.getElementById('id01').style.display='none'"></div>
 
+    	</div>
+        <div id="myOverlay" class="overlay">
+        <div class="overlay-content">
+            <a class="closebtn" onclick="closeSearch()">&times;</a>    
+            <iframe class="iFrame_content" id="myFrame" src=""></iframe>
+        </div>
+    </div>
+      <div class="module">
+        <div class="header"  id="test">Tiêu đề cố định</div>
+	    <div class="bottom">Footer cố định</div>
+        
+        <div class="row" id="row">
+            
+        </div>
     </div>
   </div>
 </div>
+
+
+
+
+
             
 </body>
 </html>
