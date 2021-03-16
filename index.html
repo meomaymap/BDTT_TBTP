@@ -141,7 +141,15 @@ html, body {
             background-color: rgba(0,0,0, 0.9);
             z-index: 2;
         }
-
+	
+	.main {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            z-index: 3;
+            top: 0;
+            left: 0;
+        }
         .overlay-content {
             position: relative;
             top: 0%;
@@ -225,7 +233,7 @@ html, body {
 <body onclick="lock('portrait')">
 
 
-    
+    <div class="main">
     <div id="myLoading" class="Loading">
         <div class="Loading-content">
             <div class="loader"></div>
@@ -244,7 +252,7 @@ html, body {
             
         </div>
     </div>
-    
+	</div>
 
 <script>
 
@@ -422,7 +430,7 @@ var MaxNumCol = 8;
                 //openFullscreen();
                 setStyle(EID("myLoading"), {'display': 'none'});
                 //setTimeout(function(){ lock('portrait'); }, 250);
-		//setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
+		//setStyle(EID("myLoading"), {'hidden'}); 
                 
             });
             
@@ -639,7 +647,7 @@ var MaxNumCol = 8;
                 }        
 
                 setStyle(EID("myLoading"), {'display': 'none'});
-		setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
+		//setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
 
                 if (link != "none" && link !="") {
                     EID("myFrame").src = link;
