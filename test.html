@@ -137,6 +137,12 @@ html, body {
             z-index: 2;
         }
 
+        .main {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+        }
+
         .overlay-content {
             position: relative;
             top: 0%;
@@ -235,36 +241,28 @@ html, body {
 </script>
 	  
 <div class="main">
-
-	<button onclick="document.getElementById('id01').style.display='block'; napData()" class="w3-button w3-black">Open Modal</button>
-
+ 
   <div id="id01" class="loading" style="display: none" >
     <div class="Loading-content">
 
         	<div class="loader" onclick="document.getElementById('id01').style.display='none'"></div>
 
     	</div>
-        <div id="myOverlay" class="overlay">
-        <div class="overlay-content">
-            <a class="closebtn" onclick="closeSearch()">&times;</a>    
-            <iframe class="iFrame_content" id="myFrame" src=""></iframe>
-        </div>
-    </div>
-      <div class="module">
-        <div class="header"  id="test">Tiêu đề cố định</div>
-	    <div class="bottom">Footer cố định</div>
         
-        <div class="row" id="row">
-            
-        </div>
-    </div>
+      
   </div>
+  <div class="module">
+    <div class="header"  id="test"><a onclick="document.getElementById('id01').style.display='block'; napData()" >Tiêu đề cố định</a></div>
+    <div class="bottom">Footer cố định</div>
+    
+    <div class="row" id="row">
+        <br><br>Quang
+    </div>
 </div>
-
-
-
-
-
-            
-</body>
-</html>
+<div id="myOverlay" class="overlay">
+    <div class="overlay-content">
+        <a class="closebtn" onclick="closeSearch()">&times;</a>    
+        <iframe class="iFrame_content" id="myFrame" src=""></iframe>
+    </div>
+</div>
+</div>
