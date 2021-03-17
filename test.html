@@ -238,6 +238,99 @@ html, body {
     
         loadjscssfile("https://www.w3schools.com/w3css/4/w3.css", "css"); ////dynamically load and add this .css file 
 	
+	var MaxNumCol = 8;
+        var MinNumCol = 2;
+        var NameClassCol = "column";
+        var ww = screen.width;
+        var wi = window.innerWidth;
+        var elem = document.documentElement;
+        var DisplaySize = [[992, 576, 1], 
+                           [5000,991,575]];     //desktop, tablet, Mobile
+
+		//var myVar;
+        
+        //Định nghĩa viết tắt cho element
+        function ECN(NameClass, pos) {return document.getElementsByClassName(NameClass)[pos];}
+        function ECN_Array(NameClass, pos) {return document.getElementsByClassName(NameClass);}
+        function ETN(NameTag, pos) {return document.getElementsByTagName(NameTag)[pos];}
+        function ETN_Array(NameTag, pos) {return document.getElementsByTagName(NameTag);}
+        function EN(Name, pos) {return document.getElementsByName(Name)[pos];}
+        function EN_Array(Name, pos) {return document.getElementsByName(Name);}
+        function EID(NameID) {return document.getElementById(NameID);}
+        // Kết thúc Định nghĩa viết tắt cho element
+
+        //set properties for object
+        function setStyle(el, propertyObject ) {
+            for (var property in propertyObject) {
+                el.style[property] = propertyObject[property];
+            }
+        }
+        function setStyleAllClass(NameClass, propertyObject) {
+            var el = ECN_Array(NameClass)
+            for (i=0; i<el.length;i++) {
+                setStyle(el[i], propertyObject);
+            }
+
+        }
+
+        //NapData();
+
+        //set properties for object
+        var SizeChange;
+        var pos;
+        
+        for(var i=0; i<DisplaySize[0].length;i++){
+            if(window.innerWidth > DisplaySize[0][i] && window.innerWidth <= DisplaySize[1][i]) {
+                SizeChange = "screen and (min-width: " + DisplaySize[0][i] + "px) and (max-width: " + DisplaySize[1][i] + "px)";
+                pos = i;
+            }
+        }
+
+        function lock (orientation) {
+    // Go into full screen first
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+
+            // Then lock orientation
+            screen.orientation.lock(orientation);
+        }
+
+        function displayWindowSize() {
+            //openFullscreen();
+            
+            // Get width and height of the window excluding scrollbars
+            // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+            let vh = window.innerHeight * 0.01;
+
+
+            // Then we set the value in the --vh custom property to the root of the document
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+
+            
+            for(var i=0; i<DisplaySize[0].length;i++){
+                if(window.innerWidth > DisplaySize[0][i] && window.innerWidth <= DisplaySize[1][i]) {
+                    SizeChange = "screen and (min-width: " + DisplaySize[0][i] + "px) and (max-width: " + DisplaySize[1][i] + "px)";
+                    pos = Math.pow(2, i);
+                }
+            }
+            
+
+            
+
+            AllDevice();
+
+            
+            lock('portrait');
+        }
+	
 	function napData() {
     	var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
             
@@ -313,3 +406,6 @@ html, body {
     </div>
 </div>
 </div>
+
+</body>
+</html>
