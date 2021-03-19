@@ -273,6 +273,7 @@
         var DisplaySize = [[992, 576, 1], 
                            [5000,991,575]];     //desktop, tablet, Mobile
 
+		
 		//var myVar;
         
         //Định nghĩa viết tắt cho element
@@ -300,6 +301,8 @@
         }
 
         //NapData();
+		
+		var wHeader = ECN("header",0).offsetWidth;
 
         //set properties for object
         var SizeChange;
@@ -339,7 +342,8 @@
             // Then we set the value in the --vh custom property to the root of the document
             document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-			alert(1);
+			if (ECN("header",0).offsetWidth>wHeader)
+				alert(1);
             
             for(var i=0; i<DisplaySize[0].length;i++){
                 if(window.innerWidth > DisplaySize[0][i] && window.innerWidth <= DisplaySize[1][i]) {
