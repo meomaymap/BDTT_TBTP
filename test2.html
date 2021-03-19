@@ -5,39 +5,29 @@
 <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
 	<meta charset="UTF-8">
 <style>
-	      
-		/* disable pull to refresh, keeps glow effects */
-html, body {
-    font-family: Arial;
-  padding: 0px;
-  margin: 0px;
-  overscroll-behavior-y: contain; 
-}
-
-
-:root {
-			--parent-height-1: 5vh;
-		}
+	:root {--parent-height-1: 5vh;}
 		
-		* {
-            touch-action: manipulation;
+	* {touch-action: manipulation;}
+		
+	/* disable pull to refresh, keeps glow effects */
+	html, body {
+		font-family: Arial;
+		padding: 0px;
+		margin: 0px;
+		overscroll-behavior-y: contain; 
+	}
 
-        }
-               
-
-        .module {
-            height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-            height: calc(var(--vh, 1vh) * 100);
-            margin: 0 auto;
-            max-width: 100%;
-            overflow: auto;
-            position: relative;
-			padding-bottom: var(--parent-height-1);
-            
-        }
+    .module {
+		height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+		height: calc(var(--vh, 1vh) * 100);
+		margin: 0 auto;
+		max-width: 100%;
+		overflow: auto;
+		position: relative;
+		padding-bottom: var(--parent-height-1);       
+    }
 
         .module__item {
             align-items: center;
@@ -218,35 +208,29 @@ html, body {
 
 </head>
 <body>
-
-	  
-<div class="main">
- 
-	<div id="id01" class="loading" style="display: none" >
-		<div class="Loading-content">
-
-        	<div class="loader" onclick="document.getElementById('id01').style.display='none'"></div>
-
-    	</div>
-        
-      
-	</div>
-	<div class="module">
-		<div class="header"  id="test"><a onclick="napData();" >Tiêu đề cố định</a></div>
-		<div class="bottom">Footer cố định</div>
-    
-		<div class="row" id="row">
-        
+	<div class="main">
+	 
+		<div id="id01" class="loading" style="display: none" >
+			<div class="Loading-content">
+				<div class="loader" onclick="document.getElementById('id01').style.display='none'"></div>
+			</div>
+		  
+		</div>
+		<div class="module">
+			<div class="header"  id="test"><a onclick="napData();" >Tiêu đề cố định</a></div>
+			<div class="bottom">Footer cố định</div>
+		
+			<div class="row" id="row">
+			
+			</div>
+		</div>
+		<div id="myOverlay" class="overlay">
+			<div class="overlay-content">
+				<a class="closebtn" onclick="closeSearch()">&times;</a>    
+				<iframe class="iFrame_content" id="myFrame" src=""></iframe>
+			</div>
 		</div>
 	</div>
-	<div id="myOverlay" class="overlay">
-		<div class="overlay-content">
-			<a class="closebtn" onclick="closeSearch()">&times;</a>    
-			<iframe class="iFrame_content" id="myFrame" src=""></iframe>
-		</div>
-	</div>
-</div>
-
 
 <script>
         
@@ -280,7 +264,7 @@ html, body {
 
 
 //Tạo dộ rộng cho cot khi độ rộng màn hình thay đổi
-var MaxNumCol = 8;
+		var MaxNumCol = 8;
         var MinNumCol = 2;
         var NameClassCol = "column";
         var ww = screen.width;
@@ -355,7 +339,7 @@ var MaxNumCol = 8;
             // Then we set the value in the --vh custom property to the root of the document
             document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-
+			alert(1);
             
             for(var i=0; i<DisplaySize[0].length;i++){
                 if(window.innerWidth > DisplaySize[0][i] && window.innerWidth <= DisplaySize[1][i]) {
