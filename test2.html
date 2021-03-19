@@ -343,7 +343,7 @@
             document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 			if (ECN("header",0).offsetWidth>wHeader)
-				alert(1);
+				alert(ECN("header",0).offsetWidth);
             
             for(var i=0; i<DisplaySize[0].length;i++){
                 if(window.innerWidth > DisplaySize[0][i] && window.innerWidth <= DisplaySize[1][i]) {
