@@ -302,7 +302,7 @@
 
         //NapData();
 		
-		//var wHeader = ECN("header",0).offsetWidth;
+		var wHeader = ECN("header",0).offsetWidth;
 
         //set properties for object
         var SizeChange;
@@ -342,7 +342,7 @@
             // Then we set the value in the --vh custom property to the root of the document
             document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-			if (ECN("header",0).offsetWidth > DisplaySize[1][2]) {
+			if (ECN("header",0).offsetWidth > wHeader) {
 				lock('portrait');
 				alert(1);
 			}
