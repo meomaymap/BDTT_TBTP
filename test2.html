@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 	<meta charset="UTF-8">
-
-
 <style>
-
-
-	
-/* disable pull to refresh, keeps glow effects */
+	      
+		/* disable pull to refresh, keeps glow effects */
 html, body {
     font-family: Arial;
   padding: 0px;
@@ -70,12 +67,6 @@ html, body {
 			text-align: center;
             z-index: 1;
 		}
-		
-		.main {
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-        }
 		
 		div.bottom {
 			position: fixed;
@@ -147,7 +138,12 @@ html, body {
             background-color: rgba(0,0,0, 0.9);
             z-index: 2;
         }
-	
+
+        .main {
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+        }
 
         .overlay-content {
             position: relative;
@@ -217,53 +213,42 @@ html, body {
             height: calc(var(--vh, 1vh) * 100);
             
         }
-
-
-
-
-/* End Responsive Four Column Layout */
-
+        
 </style>
-
-
-  
 
 </head>
 <body>
 
-
-    <div class="main">
+	  
+<div class="main">
  
-  <div id="id01" class="loading" style="display: none" >
-    <div class="Loading-content">
+	<div id="id01" class="loading" style="display: none" >
+		<div class="Loading-content">
 
         	<div class="loader" onclick="document.getElementById('id01').style.display='none'"></div>
 
     	</div>
         
       
-  </div>
-  <div class="module">
-    <div class="header"  id="test"><a onclick="napData();" >Tiêu đề cố định</a></div>
-    <div class="bottom">Footer cố định</div>
+	</div>
+	<div class="module">
+		<div class="header"  id="test"><a onclick="napData();" >Tiêu đề cố định</a></div>
+		<div class="bottom">Footer cố định</div>
     
-    <div class="row" id="row">
+		<div class="row" id="row">
         
-    </div>
+		</div>
+	</div>
+	<div id="myOverlay" class="overlay">
+		<div class="overlay-content">
+			<a class="closebtn" onclick="closeSearch()">&times;</a>    
+			<iframe class="iFrame_content" id="myFrame" src=""></iframe>
+		</div>
+	</div>
 </div>
-<div id="myOverlay" class="overlay">
-    <div class="overlay-content">
-        <a class="closebtn" onclick="closeSearch()">&times;</a>    
-        <iframe class="iFrame_content" id="myFrame" src=""></iframe>
-    </div>
-</div>
-</div>
+
 
 <script>
-
-
-    //Tạo dộ rộng cho cot khi độ rộng màn hình thay đổi
-
         
         //Tạo thẻ link bằng js - 2
         function loadjscssfile(filename, filetype){
@@ -356,7 +341,7 @@ var MaxNumCol = 8;
             }
 
             // Then lock orientation
-            screen.orientation.lock(orientation);
+            //screen.orientation.lock(orientation);
         }
 
         function displayWindowSize() {
@@ -385,7 +370,7 @@ var MaxNumCol = 8;
             AllDevice();
 
             
-            lock('portrait');
+            //lock('portrait');
         }
 
 
@@ -398,12 +383,13 @@ var MaxNumCol = 8;
             //myVar = setTimeout(function(){ setStyle(EID("myLoading"), {'display': 'block'}); }, 0);
             //setTimeout(function(){ setStyle(EID("myLoading"), {'display': 'block'}); }, 0);
             //setStyle(EID("myLoading"), {'display': 'block'});
+			setStyle(EID("id01"), {'display': 'block'});
             
             var script_url = "https://script.google.com/macros/s/AKfycbx4mSzVI2d7vXr-I8b503ct7zm0iBRFyUObAqBuHWxpacmErLM/exec";
             
             var url = script_url+"?";
                 url = url + "action" + "=" + "Import_ListProgram";
-                url = url + "&" + "url" + "=" + window.location.href;
+                url = url + "&" + "url" + "=" + "https://meomaymap.github.io";	//window.location.href;
                 url = url + "&" + "dk" + "=" + 1;
 
             $.getJSON(url, function (json) {
@@ -434,9 +420,11 @@ var MaxNumCol = 8;
                 }               
 
                 displayWindowSize();
+				//document.getElementById('id01').style.display='none';
+				setStyle(EID("id01"), {'display': 'none'});
                 //openFullscreen();
                 //setStyle(EID("myLoading"), {'display': 'none'});
-				//document.getElementById('id01').style.display='none'
+				//document.getElementById('id01').style.display='none';
                 //setTimeout(function(){ lock('portrait'); }, 250);
 		//setStyle(EID("myLoading"), {'hidden'}); 
                 
@@ -512,9 +500,9 @@ var MaxNumCol = 8;
                     //lock('portrait');
                 }
             }
-            lock('portrait');
+            //lock('portrait');
         }
-        AllDevice();
+        //AllDevice();
        
         function preventPullToRefresh(element) {
 			var prevent = false;
@@ -534,7 +522,7 @@ var MaxNumCol = 8;
 		    });
 
 			document.querySelector(element).addEventListener('touchmove', function(e){
-                lock('portrait');
+                //lock('portrait');
                 if (prevent) {
                    
                     prevent = false;
@@ -542,8 +530,6 @@ var MaxNumCol = 8;
                 }
 			});
 		  }
-
-          window.onbeforeunload = function() { return true; }
 
         //Disable get code
         //DISABLE RIGHT-CLICK
@@ -631,11 +617,13 @@ var MaxNumCol = 8;
 	}
 
     function openProgram(elmnt) {
-        lock('portrait');
+        //lock('portrait');
 		
 		//setStyle(EID("myLoading"), {'display': 'block'});
 	
 	    //setStyle(EID("myLoading"), {'visibility': 'visible'}); 
+		//document.getElementById('id01').style.display='block';
+		setStyle(EID("id01"), {'display': 'block'});
 	    
         
         
@@ -643,7 +631,7 @@ var MaxNumCol = 8;
             
             var url = script_url+"?";
                 url = url + "action" + "=" + "Condition";
-                url = url + "&" + "url" + "=" + window.location.href;
+                url = url + "&" + "url" + "=" + "https://meomaymap.github.io";	//window.location.href;
                 url = url + "&" + "dk" + "=" + GetElement(elmnt,[1,2]).innerHTML;
 
             var link = "none";
@@ -656,7 +644,8 @@ var MaxNumCol = 8;
                     }
                 }        
 
-                //setStyle(EID("myLoading"), {'display': 'none'});
+                setStyle(EID("id01"), {'display': 'none'});
+				//document.getElementById('id01').style.display='none';
 		//setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
 
                 if (link != "none" && link !="") {
@@ -674,10 +663,7 @@ var MaxNumCol = 8;
         setStyle(EID("myOverlay"), {'display': 'none'});
 	//setStyle(EID("myLoading"), {'visibility': 'hidden'}); setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
         EID("myFrame").src ="" ;
-    }        
-
-    
-
+    }
 </script>
 
 </body>
