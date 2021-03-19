@@ -665,6 +665,39 @@
 	//setStyle(EID("myLoading"), {'visibility': 'hidden'}); setStyle(EID("myLoading"), {'visibility': 'hidden'}); 
         EID("myFrame").src ="" ;
     }
+	
+function processOrientation(forceOrientation) {
+  var orientation = window.orientation;
+  if (forceOrientation != undefined)
+    orientation = forceOrientation;
+  var domElement = document.getElementById('fullscreen-element-div');
+  switch(orientation) {
+    case 90:
+      var width = window.innerHeight;
+      var height = window.innerWidth;
+      domElement.style.width = "100vh";
+      domElement.style.height = "100vw";
+      domElement.style.transformOrigin="50% 50%";
+      domElement.style.transform="translate("+(window.innerWidth/2-width/2)+"px, "+(window.innerHeight/2-height/2)+"px) rotate(-90deg)";
+      break;
+    case -90:
+      var width = window.innerHeight;
+      var height = window.innerWidth;
+      domElement.style.width = "100vh";
+      domElement.style.height = "100vw";
+      domElement.style.transformOrigin="50% 50%";
+      domElement.style.transform="translate("+(window.innerWidth/2-width/2)+"px, "+(window.innerHeight/2-height/2)+"px) rotate(90deg)";
+      break;
+    default:
+      domElement.style.width = "100vw";
+      domElement.style.height = "100vh";
+      domElement.style.transformOrigin="";
+      domElement.style.transform="";
+      break;
+  }
+}
+window.addEventListener('orientationchange', processOrientation);
+processOrientation();	
 </script>
 
 </body>
