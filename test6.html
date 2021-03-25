@@ -131,7 +131,11 @@
 	var node = document.createElement("LI");
        var textnode = document.createTextNode(text);
        node.appendChild(textnode);
-       document.getElementById("outputData").appendChild(node);
+
+
+	 var list = document.getElementById("outputData");
+list.insertBefore(node, list.childNodes[0]);
+
     } 
   </script>
 </body>
