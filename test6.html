@@ -60,7 +60,7 @@
   <canvas id="canvas" hidden></canvas>
   <div id="output" hidden>
     <div id="outputMessage">No QR code detected.</div>
-    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+    <div><b>Data:</b> <ul id="outputData"></ul></div>
   </div>
   <script>
     var video = document.createElement("video");
@@ -70,6 +70,8 @@
     var outputContainer = document.getElementById("output");
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
+
+    var arr = [];
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -109,7 +111,14 @@
           drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
           outputMessage.hidden = true;
           outputData.parentElement.hidden = false;
-          outputData.innerText = code.data;
+          //outputData.innerText = code.data;
+	  
+	 
+	 if (arr.includes(code.data) == false){
+         	NapUL(code.data);
+                arr.push(code.data);
+	 }
+
         } else {
           outputMessage.hidden = false;
           outputData.parentElement.hidden = true;
@@ -117,6 +126,13 @@
       }
       requestAnimationFrame(tick);
     }
+
+    function NapUL(text) {
+	var node = document.createElement("LI");
+       var textnode = document.createTextNode(text);
+       node.appendChild(textnode);
+       document.getElementById("outputData").appendChild(node);
+    } 
   </script>
 </body>
 </html>
