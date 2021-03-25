@@ -62,6 +62,9 @@
     <div id="outputMessage">No QR code detected.</div>
     <div><b>Data:</b> <ul id="outputData"></ul></div>
   </div>
+<audio id="myAudio">
+  <source src="horse.ogg" type="audio/ogg">
+</audio>
   <script>
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
@@ -72,6 +75,7 @@
     var outputData = document.getElementById("outputData");
 
     var arr = [];
+	  var x = document.getElementById("myAudio"); 
 
     function drawLine(begin, end, color) {
       canvas.beginPath();
@@ -117,6 +121,7 @@
 	 if (arr.includes(code.data) == false){
          	NapUL(code.data);
                 arr.push(code.data);
+		 x.play();
 	 }
 
         } else {
