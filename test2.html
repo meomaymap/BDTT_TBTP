@@ -235,7 +235,17 @@
 	</div>
 
 <script>
-        
+        window.addEventListener('orientationchange', function(){
+ if(window.neworientation.current === 'portrait|landscape'){
+    // do something……
+	 alert("D");
+ } else {
+    // do something……
+	 alert("Ngang");
+ }
+}, false);
+	
+	
         //Tạo thẻ link bằng js - 2
         function loadjscssfile(filename, filetype){
             if (filetype=="js"){ //if filename is a external JavaScript file
