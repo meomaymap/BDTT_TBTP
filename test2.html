@@ -235,15 +235,6 @@
 	</div>
 
 <script>
-        window.addEventListener('orientationchange', function(){
- if(window.neworientation.current === 'portrait|landscape'){
-    // do something……
-	 alert("D");
- } else {
-    // do something……
-	 alert("Ngang");
- }
-}, false);
 	
 	
         //Tạo thẻ link bằng js - 2
@@ -586,7 +577,8 @@
     //document.getElementById("row").addEventListener("scroll", lock('portrait'));
 
     document.addEventListener("touchstart", function(e){
-        lock('portrait');
+        //lock('portrait');
+	    openFullscreen();
         if(event.touches.length > 1){
                 //the event is multi-touch
                 //you can then prevent the behavior
