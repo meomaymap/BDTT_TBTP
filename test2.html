@@ -550,35 +550,20 @@
             }
         });
 
-        /*
+        
 	window.addEventListener("load",function() {
             // Set a timeout...
-            setTimeout(function(){
+             openFullscreen();
+		setTimeout(function(){
             // Hide the address bar!
                 window.scrollTo(0, 1);
-		    openFullscreen();
+		   
             }, 0);
 
             
         });
-	*/
 	
-	window.onload = maxWindow;
 
-    function maxWindow() {
-        window.moveTo(0, 0);
-
-        if (document.all) {
-            top.window.resizeTo(screen.availWidth, screen.availHeight);
-        }
-
-        else if (document.layers || document.getElementById) {
-            if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
-                top.window.outerHeight = screen.availHeight;
-                top.window.outerWidth = screen.availWidth;
-            }
-        }
-    }
         //Disable get code
 
         function openFullscreen() {
@@ -697,9 +682,9 @@
         EID("myFrame").src ="" ;
     }
 	
-	//window.addEventListener("click", function(event) {
-	//	openFullscreen();
-	//});
+	window.addEventListener("click", function(event) {
+		openFullscreen();
+	});
 	
 	
 
