@@ -501,13 +501,14 @@
         //AllDevice();
        
         function preventPullToRefresh(element) {
+		 openFullscreen();
 			var prevent = false;
 
 			document.querySelector(element).addEventListener('touchstart', function(e){
                 lock('portrait');
                 if (e.touches.length !== 1) { 
                     
-                    //openFullscreen();
+                   
                     return; 
                 }
 
@@ -549,6 +550,7 @@
             setTimeout(function(){
             // Hide the address bar!
                 window.scrollTo(0, 1);
+		    openFullscreen();
             }, 0);
 
             
