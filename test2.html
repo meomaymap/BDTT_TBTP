@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>	-->
 
 	<meta charset="UTF-8">
 <style>
@@ -243,8 +243,10 @@
 	window.addEventListener("load",function() {
             // Set a timeout...
              openFullscreen();
-		var md = new MobileDetect(window.navigator.userAgent);
-		mdos=md.os();
+		//var md = new MobileDetect(window.navigator.userAgent);
+		//mdos=md.os();
+		DetectMobile();
+		
 		setTimeout(function(){
             // Hide the address bar!
                 window.scrollTo(0, 1);
@@ -253,6 +255,22 @@
 
             
         });
+	
+	function DetectMobile(){
+		var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i),
+          isTablet = navigator.userAgent.toLowerCase().match(/tablet/i),
+          isAndroid = navigator.userAgent.toLowerCase().match(/android/i),
+          isiPhone = navigator.userAgent.toLowerCase().match(/iphone/i),
+          isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+
+      // (B) DETECTED DEVICE TYPE
+      var detected = isMobile ? "Mobile | " : "Not Mobile | ";
+      detected += isTablet ? "Tablet | " : "Not Tablet | ";
+      if (isAndroid) { detected += "Android"; }
+      else if (isiPhone || isiPad) { detected += "Apple"; }
+      else { detected += "Nope"; }
+      mdos=detected;
+	}
 	
         //Tạo thẻ link bằng js - 2
         function loadjscssfile(filename, filetype){
@@ -383,7 +401,9 @@
 			//openFullscreen();	
 			//EID("myOverlay").style.transform = "rotate(90deg)";
 			//alert(2);
-			if (mdos == "AndroidOS" || mdos == "iOS"){
+			var n = mdos.indexOf("Not Mobile");
+			//if (mdos == "AndroidOS" || mdos == "iOS"){
+			if(n>0){
 				alert("Ngang");
 			} else {
 				alert("Dọc");
