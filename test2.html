@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1.0, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
 	<meta charset="UTF-8">
 <style>
 	:root {--parent-height-1: 5vh;}
@@ -237,7 +239,20 @@
 	</div>
 
 <script>
-	
+	var mdos;
+	window.addEventListener("load",function() {
+            // Set a timeout...
+             openFullscreen();
+		var md = new MobileDetect(window.navigator.userAgent);
+		mdos=md.os();
+		setTimeout(function(){
+            // Hide the address bar!
+                window.scrollTo(0, 1);
+		   
+            }, 0);
+
+            
+        });
 	
         //Tạo thẻ link bằng js - 2
         function loadjscssfile(filename, filetype){
@@ -368,7 +383,13 @@
 			//openFullscreen();	
 			//EID("myOverlay").style.transform = "rotate(90deg)";
 			//alert(2);
+			if (mdos == "AndroidOS"){
+				alert("Ngang");
+			} else {
+				alert("Dọc");
 			}
+				
+		}
 		
 		
         }
@@ -551,17 +572,6 @@
         });
 
         
-	window.addEventListener("load",function() {
-            // Set a timeout...
-             openFullscreen();
-		setTimeout(function(){
-            // Hide the address bar!
-                window.scrollTo(0, 1);
-		   
-            }, 0);
-
-            
-        });
 	
 
         //Disable get code
